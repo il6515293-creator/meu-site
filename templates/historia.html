@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feliz aniversário, minha princesa linda🤍</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="historia">
+
+        <!-- ==========================
+             PÁGINA 1
+        =========================== -->
+
+        <section class="pagina ativa" id="pagina1">
+
+            <section class="contador-section">
+
+                <h1>Feliz aniversário, minha princesa linda🤍</h1>
+
+            </section>
+
+        </section>
+
+
+        <!-- ==========================
+             PÁGINA 2 - FOTOS 1 A 6
+        =========================== -->
+
+        <section class="pagina" id="pagina2">
+
+            <section class="fotos-paginas">
+
+                <div class="pagina-fotos">
+
+                    {% for foto in fotos[:6] %}
+
+                    <div class="momento foto-item">
+
+                        <div class="timeline-foto">
+
+                            <img src="{{ url_for('static', filename='fotos/' + foto) }}"
+                                 alt="Momento nosso">
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ==========================
+             PÁGINA 3 - FOTOS 7 A 12
+        =========================== -->
+
+        <section class="pagina" id="pagina3">
+
+            <section class="fotos-paginas">
+
+                <div class="pagina-fotos">
+
+                    {% for foto in fotos[6:12] %}
+
+                    <div class="momento foto-item">
+
+                        <div class="timeline-foto">
+
+                            <img src="{{ url_for('static', filename='fotos/' + foto) }}"
+                                 alt="Momento nosso">
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ==========================
+             PÁGINA 4 - FOTOS 13 A 19
+        =========================== -->
+
+        <section class="pagina" id="pagina4">
+
+            <section class="fotos-paginas">
+
+                <div class="pagina-fotos">
+
+                    {% for foto in fotos[12:] %}
+
+                    <div class="momento foto-item">
+
+                        <div class="timeline-foto">
+
+                            <img src="{{ url_for('static', filename='fotos/' + foto) }}"
+                                 alt="Momento nosso">
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ==========================
+             PÁGINA 5 - JOGO DA FORCA
+        =========================== -->
+
+        <section class="pagina" id="pagina5">
+
+            <div class="forca">
+
+                <p class="pequeno">ANTES DA ÚLTIMA PÁGINA...</p>
+
+                <h1>Descubra a palavra 🤍</h1>
+
+                <p class="instrucao">
+                    Dica: apelidos que já te dei e você não gostou🤍
+                </p>
+
+                <div id="palavra"></div>
+
+                <p class="tentativas">
+                    Erros: <span id="erros">0</span> / 6
+                </p>
+
+                <div id="letras"></div>
+
+                <p id="mensagemForca"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             PÁGINA 6 - FINAL
+        =========================== -->
+
+        <section class="pagina" id="pagina6">
+
+            <div class="texto-final">
+
+                <h1>Para você, meu amor🤍</h1>
+
+                <p>
+                    Escreva aqui o seu texto final...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+             NAVEGAÇÃO
+        =========================== -->
+
+        <div class="navegacao-fotos">
+
+            <button id="btnAnterior" onclick="paginaAnterior()">
+                ← Voltar
+            </button>
+
+            <span id="numeroPagina">
+                1 / 6
+            </span>
+
+            <button id="btnProxima" onclick="proximaPagina()">
+                Próxima →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* ==========================
+           NAVEGAÇÃO DAS PÁGINAS
+        ========================== */
+
+        const paginas = document.querySelectorAll(".pagina");
+
+        let paginaAtual = 1;
+
+        const totalPaginas = 6;
+
+
+        function mostrarPagina(numero) {
+
+            paginaAtual = numero;
+
+            paginas.forEach(function(pagina) {
+                pagina.classList.remove("ativa");
+            });
+
+            document
+                .getElementById("pagina" + paginaAtual)
+                .classList.add("ativa");
+
+
+            document.getElementById("numeroPagina").textContent =
+                paginaAtual + " / " + totalPaginas;
+
+
+            document.getElementById("btnAnterior").style.visibility =
+                paginaAtual === 1 ? "hidden" : "visible";
+
+
+            document.getElementById("btnProxima").style.visibility =
+                paginaAtual === totalPaginas ? "hidden" : "visible";
+
+
+            window.scrollTo(0, 0);
+
+        }
+
+
+        function proximaPagina() {
+
+            if (paginaAtual < totalPaginas) {
+
+                /*
+                 * Página 5 é o jogo.
+                 * Só poderá chegar à página 6
+                 * depois de acertar a palavra.
+                 */
+
+                if (paginaAtual === 5 && !jogoConcluido) {
+
+                    mensagemForca.textContent =
+                        "Complete o jogo primeiro 🤍";
+
+                    return;
+
+                }
+
+                mostrarPagina(paginaAtual + 1);
+
+            }
+
+        }
+
+
+        function paginaAnterior() {
+
+            if (paginaAtual > 1) {
+
+                mostrarPagina(paginaAtual - 1);
+
+            }
+
+        }
+
+
+        /* ==========================
+           JOGO DA FORCA
+        ========================== */
+
+        const palavraSecreta = "MORCEGAOCOMRAIVA";
+
+        let letrasAcertadas = [];
+
+        let errosForca = 0;
+
+        let jogoConcluido = false;
+
+
+        const palavraElemento =
+            document.getElementById("palavra");
+
+        const letrasElemento =
+            document.getElementById("letras");
+
+        const errosElemento =
+            document.getElementById("erros");
+
+        const mensagemForca =
+            document.getElementById("mensagemForca");
+
+
+        function mostrarPalavra() {
+
+            let resultado = "";
+
+            for (let letra of palavraSecreta) {
+
+                if (letrasAcertadas.includes(letra)) {
+
+                    resultado += letra + " ";
+
+                } else {
+
+                    resultado += "_ ";
+
+                }
+
+            }
+
+            palavraElemento.textContent = resultado.trim();
+
+
+            if (!resultado.includes("_")) {
+
+                jogoConcluido = true;
+
+                mensagemForca.textContent =
+                    "Muito bem amor, ta sabida.";
+
+                document.getElementById("btnProxima").style.visibility =
+                    "visible";
+
+            }
+
+        }
+
+
+        function criarLetras() {
+
+            const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            alfabeto.split("").forEach(function(letra) {
+
+                const botao = document.createElement("button");
+
+                botao.textContent = letra;
+
+                botao.onclick = function() {
+
+                    escolherLetra(letra, botao);
+
+                };
+
+                letrasElemento.appendChild(botao);
+
+            });
+
+        }
+
+
+        function escolherLetra(letra, botao) {
+
+            botao.disabled = true;
+
+
+            if (palavraSecreta.includes(letra)) {
+
+                letrasAcertadas.push(letra);
+
+                botao.classList.add("certa");
+
+                mensagemForca.textContent =
+                    "Acertou essa, mas eu vou pensar se deixo acertar mais🤍";
+
+                mostrarPalavra();
+
+            } else {
+
+                errosForca++;
+
+                errosElemento.textContent = errosForca;
+
+                botao.classList.add("errada");
+
+                mensagemForca.textContent =
+                    "Errou ruinzona, mas eu deixo vc ir denovo";
+
+            }
+
+
+            if (errosForca >= 6 && !jogoConcluido) {
+
+                mensagemForca.textContent =
+                    "Você perdeu! Tente novamente.";
+
+                setTimeout(function() {
+
+                    reiniciarJogo();
+
+                }, 1500);
+
+            }
+
+        }
+
+
+        function reiniciarJogo() {
+
+            letrasAcertadas = [];
+
+            errosForca = 0;
+
+            jogoConcluido = false;
+
+            errosElemento.textContent = "0";
+
+            letrasElemento.innerHTML = "";
+
+            mensagemForca.textContent = "";
+
+            criarLetras();
+
+            mostrarPalavra();
+
+        }
+
+
+        criarLetras();
+
+        mostrarPalavra();
+
+        mostrarPagina(1);
+
+    </script>
+
+</body>
+
+</html>

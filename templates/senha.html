@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Antes de entrar 🤍</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main class="senha-pagina">
+
+        <div class="cartao-senha">
+
+            <p class="pequeno">ANTES DE ENTRAR...</p>
+
+            <h1>Resolva a questão 🤍</h1>
+
+
+            <!-- ==========================
+                 OBSERVAÇÕES
+            =========================== -->
+
+            <div class="observacoes">
+
+                <p>
+                    <strong>
+                        De forma alguma use inteligência artificial,
+                        pesquise a resposta ou chute alternativas aleatórias.
+                    </strong>
+                </p>
+
+                <p>
+                    <strong>
+                        Se fizer alguma das opções acima,
+                        nem fale mais comigo.
+                    </strong>
+                </p>
+
+                <p>
+                    <strong>*peça ajuda de Iago*</strong>
+                </p>
+
+            </div>
+
+
+            <!-- ==========================
+                 QUESTÃO
+            =========================== -->
+
+            <div class="questao">
+
+                <p>
+                    O número N de pessoas que tomaram conhecimento
+                    de uma notícia t horas após a sua ocorrência é dado pela função:
+                </p>
+
+                <p class="funcao">
+                    N = 30 · 4<sup>t</sup>
+                </p>
+
+                <p>
+                    Após quantas horas aproximadamente 2160 pessoas
+                    estarão sabendo da ocorrência dessa notícia?
+                </p>
+
+                <div class="alternativas">
+
+                    <p>a) 2 horas e 36 minutos</p>
+
+                    <p>b) 2 horas e 48 minutos</p>
+
+                    <p>c) 3 horas e 6 minutos</p>
+
+                    <p>d) 3 horas e 15 minutos</p>
+
+                    <p>e) 3 horas e 20 minutos</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================
+                 RESPOSTA
+            =========================== -->
+
+            <input
+                type="text"
+                id="senha"
+                placeholder="Resposta"
+                maxlength="1"
+                autocomplete="off"
+            >
+
+            <button onclick="verificarSenha()">
+                Entrar 🤍
+            </button>
+
+            <p id="erroSenha" class="erro-senha"></p>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==========================
+         JAVASCRIPT
+    =========================== -->
+
+    <script>
+
+        function verificarSenha() {
+
+            const resposta =
+                document.getElementById("senha").value.trim().toLowerCase();
+
+            const erro =
+                document.getElementById("erroSenha");
+
+
+            if (resposta === "c") {
+
+                window.location.href = "/historia";
+
+            } else {
+
+                erro.textContent =
+                    "Resposta incorreta. Tente novamente.";
+
+            }
+
+        }
+
+
+        document.getElementById("senha").addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                verificarSenha();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

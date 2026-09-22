@@ -1,0 +1,774 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #4b304d;
+}
+
+
+/* ==========================
+   TELA INICIAL
+========================== */
+
+.inicio {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    background: #ead5ed;
+
+    overflow: hidden;
+}
+
+.cartao {
+    width: min(90%, 520px);
+
+    padding: 55px 35px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 28px;
+
+    box-shadow: 0 20px 60px rgba(100, 60, 100, 0.15);
+
+    backdrop-filter: blur(12px);
+
+    z-index: 2;
+}
+
+.pequeno {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #96729a;
+
+    margin-bottom: 18px;
+}
+
+.inicio h1 {
+    font-family: Georgia, serif;
+
+    font-size: 52px;
+    font-weight: normal;
+
+    color: #59365d;
+
+    margin-bottom: 18px;
+}
+
+.descricao {
+    color: #765a78;
+    font-size: 16px;
+    line-height: 1.7;
+
+    margin-bottom: 32px;
+}
+
+
+/* ==========================
+   BOTÃO COMEÇAR
+========================== */
+
+.inicio .cartao button {
+    display: block;
+
+    margin: 0 auto;
+
+    border: none;
+
+    background: #75477b;
+    color: white;
+
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow: 0 8px 20px rgba(117, 71, 123, 0.25);
+}
+
+.inicio .cartao button span {
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+.inicio .cartao button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(117, 71, 123, 0.3);
+}
+
+
+/* ==========================
+   CORAÇÃO
+========================== */
+
+.coracao {
+    position: absolute;
+
+    top: 12%;
+    right: 15%;
+
+    font-size: 100px;
+
+    color: rgba(117, 71, 123, 0.12);
+
+    transform: rotate(-15deg);
+}
+
+
+/* ==========================
+   HISTÓRIA
+========================== */
+
+.historia {
+    min-height: 100vh;
+
+    background: #ead5ed;
+
+    overflow-x: hidden;
+}
+
+
+/* ==========================
+   PÁGINAS
+========================== */
+
+.pagina {
+    width: 100%;
+    min-height: 100vh;
+
+    display: none;
+
+    padding: 60px 20px 120px;
+
+    background: #ead5ed;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+
+/* ==========================
+   PRIMEIRA PÁGINA
+========================== */
+
+#pagina1 {
+    min-height: 100vh;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: #ead5ed;
+}
+
+#pagina1.ativa {
+    display: flex;
+}
+
+#pagina1 h1 {
+    font-family: Georgia, serif;
+
+    font-size: 48px;
+    font-weight: normal;
+
+    color: #59365d;
+}
+
+
+/* ==========================
+   PÁGINAS DE FOTOS
+========================== */
+
+.fotos-paginas {
+    width: 100%;
+
+    padding: 20px 20px 10px;
+}
+
+.pagina-fotos {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.foto-item {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/* ==========================
+   FOTOS
+========================== */
+
+.timeline-foto {
+    width: min(90%, 420px);
+
+    background: white;
+
+    padding: 7px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(80, 45, 80, 0.12);
+}
+
+.timeline-foto img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    border-radius: 10px;
+
+    object-fit: contain;
+}
+
+
+/* ==========================
+   PÁGINA FINAL
+========================== */
+
+.texto-final {
+    max-width: 800px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    padding-top: 80px;
+}
+
+.texto-final h1 {
+    font-family: Georgia, serif;
+
+    font-size: 42px;
+    font-weight: normal;
+
+    color: #59365d;
+
+    margin-bottom: 25px;
+}
+
+.texto-final p {
+    color: #765a78;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* ==========================
+   NAVEGAÇÃO
+========================== */
+
+.navegacao-fotos {
+    position: fixed;
+
+    bottom: 20px;
+
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    z-index: 10;
+}
+
+.navegacao-fotos button {
+    border: none;
+
+    background: #75477b;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 50px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 8px 20px rgba(117, 71, 123, 0.25);
+}
+
+.navegacao-fotos button:hover {
+    transform: translateY(-2px);
+}
+
+.navegacao-fotos span {
+    color: #75477b;
+
+    font-size: 15px;
+
+    min-width: 45px;
+
+    text-align: center;
+}
+
+
+/* ==========================
+   CELULAR
+========================== */
+
+@media (max-width: 650px) {
+
+    .cartao {
+        padding: 45px 25px;
+    }
+
+    .inicio h1 {
+        font-size: 42px;
+    }
+
+    .descricao {
+        font-size: 15px;
+    }
+
+    .coracao {
+        top: 8%;
+        right: 5%;
+
+        font-size: 80px;
+    }
+
+    .pagina {
+        padding: 40px 15px 110px;
+    }
+
+    #pagina1 h1 {
+        font-size: 32px;
+    }
+
+    .timeline-foto {
+        width: 90%;
+    }
+
+    .navegacao-fotos {
+        gap: 12px;
+    }
+
+    .navegacao-fotos button {
+        padding: 10px 15px;
+
+        font-size: 13px;
+    }
+
+    .texto-final {
+        padding-top: 50px;
+    }
+
+    .texto-final h1 {
+        font-size: 32px;
+    }
+}
+/* ==========================
+   PÁGINA DA SENHA
+========================== */
+
+.senha-pagina {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    background: #ead5ed;
+}
+
+.cartao-senha {
+    width: min(95%, 650px);
+
+    padding: 40px 35px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 28px;
+
+    box-shadow: 0 20px 60px rgba(100, 60, 100, 0.15);
+
+    backdrop-filter: blur(12px);
+}
+
+.cartao-senha h1 {
+    font-family: Georgia, serif;
+
+    font-size: 38px;
+    font-weight: normal;
+
+    color: #59365d;
+
+    margin-bottom: 25px;
+}
+
+.questao {
+    text-align: left;
+
+    color: #765a78;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    background: rgba(234, 213, 237, 0.45);
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    margin-bottom: 25px;
+}
+
+.funcao {
+    text-align: center;
+
+    font-size: 22px;
+
+    color: #59365d;
+
+    margin: 20px 0;
+}
+
+.alternativas {
+    margin-top: 20px;
+}
+
+.alternativas p {
+    margin: 7px 0;
+}
+
+.cartao-senha input {
+    width: 100px;
+
+    padding: 13px;
+
+    text-align: center;
+
+    border: 2px solid #c9a9cc;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 18px;
+
+    color: #59365d;
+
+    margin-bottom: 15px;
+}
+
+.cartao-senha input:focus {
+    border-color: #75477b;
+}
+
+.cartao-senha button {
+    display: block;
+
+    margin: 0 auto;
+
+    border: none;
+
+    background: #75477b;
+
+    color: white;
+
+    padding: 13px 25px;
+
+    border-radius: 50px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.cartao-senha button:hover {
+    transform: translateY(-2px);
+}
+
+.erro-senha {
+    color: #a34f65;
+
+    font-size: 14px;
+
+    margin-top: 15px;
+}
+.observacoes {
+    margin-bottom: 25px;
+    padding: 18px;
+
+    background: rgba(117, 71, 123, 0.08);
+
+    border-radius: 16px;
+
+    color: #59365d;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.observacoes p {
+    margin: 8px 0;
+}
+
+.observacoes p:last-child {
+    margin-top: 15px;
+    font-size: 15px;
+}
+/* ==========================
+   OBSERVAÇÕES DA SENHA
+========================== */
+
+.observacoes {
+    display: block;
+
+    width: 100%;
+
+    margin: 0 auto 25px;
+
+    padding: 18px;
+
+    background: rgba(117, 71, 123, 0.10);
+
+    border: 1px solid rgba(117, 71, 123, 0.15);
+
+    border-radius: 16px;
+
+    color: #59365d;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+.observacoes p {
+    display: block;
+
+    margin: 8px 0;
+}
+
+.observacoes p:last-child {
+    margin-top: 15px;
+
+    font-size: 15px;
+}
+/* ==========================
+   JOGO DA FORCA
+========================== */
+
+.forca {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    padding: 60px 25px;
+
+    text-align: center;
+}
+
+.forca h1 {
+    font-family: Georgia, serif;
+
+    font-size: 42px;
+
+    font-weight: normal;
+
+    color: #59365d;
+
+    margin-bottom: 15px;
+}
+
+.instrucao {
+    color: #765a78;
+
+    font-size: 16px;
+
+    margin-bottom: 40px;
+}
+
+
+/* PALAVRA */
+
+#palavra {
+    font-size: 38px;
+
+    letter-spacing: 10px;
+
+    color: #59365d;
+
+    font-weight: bold;
+
+    margin: 35px 0;
+}
+
+
+/* ERROS */
+
+.tentativas {
+    color: #765a78;
+
+    margin-bottom: 25px;
+}
+
+#erros {
+    color: #75477b;
+
+    font-weight: bold;
+}
+
+
+/* LETRAS */
+
+#letras {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+}
+
+#letras button {
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #75477b;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+#letras button:hover {
+    transform: translateY(-2px);
+}
+
+#letras button:disabled {
+    cursor: default;
+
+    opacity: 0.5;
+}
+
+#letras button.certa {
+    background: #6b9b78;
+}
+
+#letras button.errada {
+    background: #a36b78;
+}
+
+
+/* MENSAGEM */
+
+#mensagemForca {
+    margin-top: 25px;
+
+    color: #59365d;
+
+    font-size: 16px;
+
+    min-height: 25px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 650px) {
+
+    .forca {
+        padding: 40px 15px;
+    }
+
+    .forca h1 {
+        font-size: 32px;
+    }
+
+    #palavra {
+        font-size: 28px;
+
+        letter-spacing: 6px;
+    }
+
+    #letras {
+        gap: 6px;
+    }
+
+    #letras button {
+        width: 38px;
+
+        height: 38px;
+
+        font-size: 13px;
+    }
+
+}
