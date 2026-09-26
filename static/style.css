@@ -236,7 +236,7 @@ body {
 ========================== */
 
 .timeline-foto {
-    width: min(90%, 420px);
+    width: min(65%%, 320px);
 
     background: white;
 
@@ -387,7 +387,7 @@ body {
     }
 
     .timeline-foto {
-        width: 90%;
+        width: 65%;
     }
 
     .navegacao-fotos {
@@ -769,6 +769,41 @@ body {
         height: 38px;
 
         font-size: 13px;
+    }
+
+}
+/* ==========================
+   MENSAGEM ACIMA DAS FOTOS
+========================== */
+
+.mensagem-fotos {
+    max-width: 700px;
+
+    margin: 0 auto 30px;
+
+    padding: 0 20px;
+
+    text-align: center;
+
+    color: #59365d;
+
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+
+    line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+
+    .mensagem-fotos {
+        font-size: 18px;
+
+        line-height: 1.5;
+
+        padding: 0 15px;
+
+        margin-bottom: 25px;
     }
 
 }
