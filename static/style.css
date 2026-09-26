@@ -236,7 +236,7 @@ body {
 ========================== */
 
 .timeline-foto {
-    width: min(65%%, 320px);
+    width: min(65%, 320px);
 
     background: white;
 
